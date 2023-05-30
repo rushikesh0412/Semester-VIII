@@ -1,6 +1,5 @@
-
-//Parallel Breadth First Search (BFS) Traversal Code:
-#include <bits/stdc++.h>
+/*
+/#include <bits/stdc++.h>
 #include <omp.h>
 using namespace std;
 
@@ -61,6 +60,9 @@ int main()
     return 0;
 }
 
+*/
+
+
 
 
 
@@ -69,25 +71,27 @@ int main()
 g++ -fopenmp HPC_Assg_01.cpp -o HPC_Assg_01
 ./HPC_Assg_01
 
-8 
-7
-1 2
-1 3
-2 4
-2 5
-3 6
-3 7
-1 6
-1
+Enter the number of vertices: 6
+Enter the number of edges: 7
+Enter edge 1: 0 1
+Enter edge 2: 0 2
+Enter edge 3: 1 3
+Enter edge 4: 2 4
+Enter edge 5: 3 4
+Enter edge 6: 3 5
+Enter edge 7: 4 5
+Enter the source vertex: 0
 
 
-BFS Traversal: 0 1 1 2 2 2 2 
-Parallel BFS took 0.0021291 seconds to execute
+
+BFS Traversal: 0 1 2 3 4 5
+Parallel BFS took 0.000270264 seconds to execute
+
 
 
 */
 
-/*
+
 //Parallel Depth First Search (DFS) Traversal Code:
 #include <bits/stdc++.h>
 #include <omp.h>
@@ -134,28 +138,39 @@ int main()
     {
         cout << "Enter edge " << i + 1 << ": ";
         cin >> u >> v;
-       
-	}
+        adj[u].push_back(v);
+        adj[v].push_back(u); // Assuming an undirected graph
+    }
 
+    DFS(adj, V, 0); // Perform DFS traversal from vertex 0
+
+    return 0;
 }
-*/
+
+
+
+
+
+
 /*
 g++ -fopenmp HPC_Assg_01.cpp -o HPC_Assg_01
 ./HPC_Assg_01
 
-7 6
-1 2
-1 3
-2 4
-2 5
-3 6
-3 7
-1
+Enter the number of vertices: 6
+Enter the number of edges: 7
+Enter edge 1: 0 1
+Enter edge 2: 0 2
+Enter edge 3: 1 3
+Enter edge 4: 2 4
+Enter edge 5: 3 4
+Enter edge 6: 3 5
+Enter edge 7: 4 5
 
 
 
-Parallel DFS Traversal: 0 2 4 5 1 3 6 7 
-Parallel DFS took 0.0016511 seconds to execute
+0 1 3 4 2 5 
+Parallel DFS took 0.000303671 seconds to execute
+
 
 */
 
